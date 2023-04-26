@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class PhoneNumber
 {
     private int firstTelephoneNumberCode;
@@ -12,7 +14,13 @@ public class PhoneNumber
             throw new IllegalArgumentException();
         }
         if (fromNumber!=null){
-            if (firstTelephoneNumberCode%1000<100){
+            if ((fromNumber>toNumber)) {
+                System.out.println("fromNumber>toNumber");
+                throw new IllegalArgumentException();
+            }
+        }
+        if (fromNumber!=null){
+            if (firstTelephoneNumberCode>999 || firstTelephoneNumberCode<900){
                 System.out.println("Проверьте параметры номера телефона");
                 throw new IllegalArgumentException();
             }
@@ -32,5 +40,19 @@ public class PhoneNumber
 
     public Integer getToNumber() {
         return toNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PhoneNumber that = (PhoneNumber) o;
+        return firstTelephoneNumberCode == that.firstTelephoneNumberCode && Objects.equals(fromNumber, that.fromNumber) && Objects.equals(toNumber, that.toNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        if(fromNumber!=null) return this.fromNumber+this.firstTelephoneNumberCode;
+        else return this.firstTelephoneNumberCode;
     }
 }

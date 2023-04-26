@@ -28,6 +28,14 @@ public class TestMain
         PhoneOperator phoneOperator=Main.phoneOperatorSearcher("+79290054946");
         assertEquals("MegaphoneBelgorod", phoneOperator.getNameOfCompany());
     }
-
-
+    @Test
+    public void getMegaphoneSaintPetesburgResult(){
+        PhoneOperator phoneOperator=Main.phoneOperatorSearcher("+79993032324");
+        assertEquals("MegaphoneSaintPetesburg", phoneOperator.getNameOfCompany());
+    }
+    @Test
+    public void getMegaphoneMoscowResult(){
+        PhoneOperator phoneOperator=Main.phoneOperatorSearcher("+79991033445");
+        assertEquals("MegaphoneMoscow", phoneOperator.getNameOfCompany());
+    }
 }
